@@ -87,11 +87,17 @@ tbl_df(features)
 # search in the 2nd column of 'features' expressions with either "mean" or "std"
 meanstdcols <- grep("(.*)mean|std(.*)",features[,2])
 tbl_df(meanstdcols)
-
-#rename column names of mergeddata dropping 'V'
+# rename column names of mergeddata dropping 'V'
 colnames(mergeddata) <- c(1:561)
-#select columns from mergeddata that are in meanstdcols (only mean and std variables)
+# select columns from mergeddata that are in meanstdcols (only mean and std variables)
 meanstdonly <- select(mergeddata,all_of(meanstdcols))
 
+# Task 3: Uses descriptive activity names to name the activities in the data set
+# read activity labels from txt file
+activitylabels <- read.table("./UCI HAR Dataset/activity_labels.txt")
+tbl_df(activitylabels)
+# Merge df with labels and label descriptions
+describedactivities <- left_join(mergedlabels, activitylabels, by="V1")
+colnames(describedactivities) <- c("Activity_ID","Activity Name")
 
 
