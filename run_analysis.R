@@ -62,21 +62,36 @@ subjecttrain <- read.table("./UCI HAR Dataset/train/subject_train.txt")
 xtrain <- read.table("./UCI HAR Dataset/train/X_train.txt")
 ytrain <- read.table("./UCI HAR Dataset/train/y_train.txt")
 
+# Task 1: Merges the training and the test sets to create one data set.
+# Merge datasets from test and train:
+# subject...txt files: are the subjects who performed activity test&train
+# X...txt files: contains Data Sets test&train
+# y...txt files: contains Labels test&†train
+
+# putsame data in one table with rbind
+mergedsubjects <- rbind(subjecttrain,subjecttest)
+mergeddata <- rbind(xtest,xtrain)
+mergedlabels <- rbind(ytest,ytrain)
+
 # Create Data Frame tbl (optional, personal preference to work with)
-tbl_df(subjecttest)
-tbl_df(xtest)
-tbl_df(ytest)
+tbl_df(mergedsubjects)
+tbl_df(mergeddata)
+tbl_df(mergedlabels)
 
-tbl_df(subjecttrain)
-tbl_df(xtrain)
-tbl_df(ytrain)
+# Task 2: extracts only the measurements on the mean and standard deviation for each measurement.
+# ..description from 'featues_info.txt':
+# mean(): Mean value
+# std(): Standard deviation
+features <- read.table("./UCI HAR Dataset/features.txt")
+tbl_df(features)
+# search in the 2nd column of 'features' expressions with either "mean" or "std"
+meanstdcols <- grep("(.*)mean|std(.*)",features[,2])
+tbl_df(meanstdcols)
 
-
-
-
-
-
-
+#rename column names of mergeddata dropping 'V'
+colnames(mergeddata) <- c(1:561)
+#select columns from mergeddata that are in meanstdcols (only mean and std variables)
+meanstdonly <- select(mergeddata,all_of(meanstdcols))
 
 
 
