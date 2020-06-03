@@ -82,4 +82,7 @@ datasetfinal <- cbind(allsubjects, describedactivities,meanstdonly)%>% rename(Su
 ## with the average of each variable for each activity and each subject.         
 newdataset <- datasetfinal %>% group_by(Subject, Activity) %>% summarize_if(is.numeric,mean)
 
-
+# Extra Task:
+# Please upload the tidy data set created in step 5 of the instructions.
+# Please upload your data set as a txt file created with write.table() using row.name=FALSE
+write.table(newdataset, file = "newdataset.txt", row.name = FALSE)
