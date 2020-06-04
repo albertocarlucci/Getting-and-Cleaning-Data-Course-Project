@@ -1,5 +1,5 @@
-# "Code Book Getting and Cleaning Data"
-## date: "4/6/2020" 
+# Code Book Getting and Cleaning Data
+## 4/6/2020 
 
 This code book describes the variables, the data, and any transformations or work that were performed to clean up the data in this project.  
 
