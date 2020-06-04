@@ -63,7 +63,7 @@ Mean and Standard Deviation Data from Task 2:
   
 Transformed data from Tasks 3 and 4:   
 
-* 'meanstdonly' gets new labels from 'desriptivelabels'
+* 'meanstdonly' gets new labels from 'descriptivelabels'
 
 Data frames from Tasks 3 and 4:
 
