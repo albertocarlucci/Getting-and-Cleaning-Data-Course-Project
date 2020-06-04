@@ -36,9 +36,6 @@ xtrain <- read.table("./UCI HAR Dataset/train/X_train.txt")
 ytrain <- read.table("./UCI HAR Dataset/train/y_train.txt")
 
 ## Task 1: Merges the training and the test sets to create one data set.
-# subject txt files: are the subjects who performed activity test&train
-# X txt files: contain Data Sets Test&Train
-# y txt files: contain Labels Test&Train
 # Merge Test & Train Data in one table
 allsubjects <- rbind(subjecttrain,subjecttest)
 alldata <- rbind(xtest,xtrain)
@@ -46,7 +43,7 @@ alllabels <- rbind(ytest,ytrain)
 
 ## Task 2: extracts only the measurements on the mean and standard deviation for each measurement.
 features <- read.table("./UCI HAR Dataset/features.txt")
-# From the description from 'featues_info.txt': mean() -> Mean value, std() -> Standard deviation
+
 # Search for expressions in the 2nd column of 'features' with either "mean" or "std"
 meanstdcols <- grep("(.*)mean|std(.*)",features[,2])
 # select columns from alldata that are in meanstdcols (only mean and std variables)
